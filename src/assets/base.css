@@ -1,0 +1,9 @@
+body {
+  background: #ffe766 !important;
+}
+
+.container-register{
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  min-height: 500px;
+}
