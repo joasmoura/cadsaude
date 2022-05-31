@@ -10,8 +10,4 @@ import Cadastro from './components/Cadastro/index.vue'
 
 <style>
 @import './assets/base.css';
-
-@media (min-width: 1024px) {
-  
-}
 </style>

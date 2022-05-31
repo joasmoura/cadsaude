@@ -1,13 +1,13 @@
 <template>
 <article>
-    <h1>{{ titulo }}</h1>
-    <h4 class="py-3">{{ subtitulo }}</h4>
+    <h1 class="titulo">{{ titulo }}</h1>
+    <h4 class="sub-titulo py-3" v-if="subtitulo">{{ subtitulo }}</h4>
     <div class="row">
         <div class="col-md-6">
             <slot />
         </div>
 
-        <div class="col-md-6 text-end px-0">
+        <div class="col-md-6 text-end px-0 d-none d-sm-block">
             <img :src="img" class="img-fluid">
         </div>
     </div>
@@ -23,7 +23,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

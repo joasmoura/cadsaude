@@ -6,7 +6,17 @@ const state = {
 
   estados: [],
   cidades: [],
-  especialidades: []
+  especialidades: [],
+  formas_pagamento: [
+    { value: 'dinheiro', text: 'Em dinheiro'},
+    { value: 'pix', text: 'Pix'},
+    { value: 'cartao', text: 'Cartão de crédito'}
+  ],
+  parcelas_cartao: [
+    { value: '1', text: '1x sem juros'},
+    { value: '2', text: '2x sem juros'},
+    { value: '3', text: '3x sem juros'}
+  ]
 }
 
 const mutations = {

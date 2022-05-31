@@ -1,29 +1,23 @@
 <template>
 <section>
-    <template v-if="step < 3">
-        <div class="row">
-            <div class="col-md-10 py-2">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" :style="`width:${(step*100)/maxStep}%;`" :aria-valuenow="step" :aria-valuemin="1" :aria-valuemax="maxStep"></div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                {{ `${step} de ${maxStep}` }}
+    <div class="row" v-if="step <= 2">
+        <div class="col col-md-10 py-2">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" :style="`width:${(step*100)/maxStep}%;`" :aria-valuenow="step" :aria-valuemin="1" :aria-valuemax="maxStep"></div>
             </div>
         </div>
 
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary btn-block" @click="$emit('next')">PRÓXIMO</button>
+        <div class="col-auto">
+            {{ `${step} de ${maxStep}` }}
         </div>
-    </template>
+    </div>
 
-    <template v-else>
-        <div class="d-grid gap-2">
-            <button class="btn btn-block">CADASTRAR PROFISSIONAL</button>
-            <button class="btn btn-block">Editar cadastro</button>
-        </div>
-    </template>
+    <div class="d-grid gap-2">
+        <button class="btn btn-block" :class="(step === 3) ? 'button-cadastrar' : 'btn-primary' " @click="$emit('next')">
+            {{ (step < 3 ? 'PRÓXIMO' : 'CADASTRAR PROFISSIONAL') }}
+        </button>
+        <button class="btn btn-block" v-if="step === 3" @click="$emit('editar_cadastro')">Editar cadastro</button>
+    </div>
 </section>
 </template>
 
