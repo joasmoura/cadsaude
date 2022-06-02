@@ -34,8 +34,8 @@
             aria-expanded="false" 
             aria-controls="collapsePagamento"
           >
-            <Field type="checkbox" :id="`forma-${i}`" class="form-check-input ml-3" name="formas_pagamento" v-model="form.formas_pagamento" :value="forma.value" rules="required"/>
-            <span class="ml-5">{{ forma.text }}</span>
+            <Field type="checkbox" :id="`forma-${i}`" class="form-check-input ml-3" :class="errors.formas_pagamento && 'is-invalid'" name="formas_pagamento" v-model="form.formas_pagamento" :value="forma.value" rules="required"/>
+            <span class="ml-5 form-check-label">{{ forma.text }}</span>
           </label>
             <div class="invalid-feedback">{{ errors.formas_pagamento }}</div>
 
