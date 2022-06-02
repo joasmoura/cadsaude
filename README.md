@@ -2,7 +2,7 @@
 
 Este sistema foi desenvolvido para cadastro de profissionais da saúde
 
-## Recommended IDE Setup
+## Bibliotecas utilizadas
 
 # Vuex
 - npm install vuex@next --save

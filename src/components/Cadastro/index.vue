@@ -1,6 +1,6 @@
 <template>
 <div class="container container-index">
-    <button @click="prevStep" class="btn btn-default m-0" :style="`visibility: ${(step > 1 && step <= 3 ? 'visible' : 'hidden')}`">
+    <button @click="prevStep" class="btn btn-default m-0" :class="`${(step > 1 && step <= 3 ? 'visible' : 'invisible')}`">
       <svg width="35px" height="35px" viewBox="0 0 48 48" style="color: #698" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="35" height="35" fill="white" fill-opacity="0.01"/>
         <path d="M31 36L19 24L31 12" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>

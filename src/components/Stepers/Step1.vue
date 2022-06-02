@@ -22,7 +22,7 @@
       <div class="row">
           <div class="col col-md-6 mb-3">
             <label for="estado" class="form-label">Estado*</label>
-            <Field as="select" name="estado" id="estado" v-model="form.estado" class="form-select" :class="errors.estado ? 'is-invalid' : ''" rules="required" @change="getCidades">
+            <Field as="select" name="estado" id="estado" :disabled="carregandoEstados" v-model="form.estado" class="form-select" :class="errors.estado ? 'is-invalid' : ''" rules="required" @change="getCidades">
               <option value="">Selecione</option>
               <option v-for="(est, i) in $store.state.estados" :key="i" :value="est.id">{{est.nome}}</option>
             </Field>
@@ -31,7 +31,7 @@
 
           <div class="col col-md-6 mb-3">
             <label for="cidade" class="form-label">Cidade*</label>
-            <Field as="select" name="cidade" id="cidade" v-model="form.cidade" class="form-select" :class="errors.cidade ? 'is-invalid' : ''" rules="required">
+            <Field as="select" name="cidade" id="cidade" :disabled="carregandoCidades" v-model="form.cidade" class="form-select" :class="errors.cidade ? 'is-invalid' : ''" rules="required">
               <option value="">Selecione</option>
               <option v-for="(cid, i) in this.$store.state.cidades" :key="i" :value="cid.id">{{cid.nome}}</option>
             </Field>
@@ -60,7 +60,9 @@ export default {
         celular: '',
         estado: '',
         cidade: ''
-      }
+      },
+      carregandoEstados: false,
+      carregandoCidades: false
     }
   },
   created () {
@@ -71,23 +73,29 @@ export default {
     async getEstados () {
       const estados = this.$store.state.estados
       if (!estados.length) {
+        this.carregandoEstados = true
         await this.axios.get('/estados').then((res) => {
           if (res.data) {
             this.$store.dispatch('inserirEstados', res.data)
+            this.carregandoEstados = false
           }
         }).catch((e) => {
           alert('Algo deu errado ao buscar estados!')
+          this.carregandoEstados = false
         })
       }
     },
     async getCidades () {
       if (this.form.estado) {
+        this.carregandoCidades = true
         await this.axios.get(`/estados/${this.form.estado}/cidades`).then((res) => {
           if (res.data) {
             this.$store.dispatch('inserirCidades', res.data)
+            this.carregandoCidades = false
           }
         }).catch((e) => {
           alert('Algo deu errado ao buscar cidades do estado selecionado!')
+          this.carregandoCidades = false
         })
       }
     },
