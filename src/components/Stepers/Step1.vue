@@ -99,12 +99,14 @@ export default {
         })
       }
     },
+    // verifica se o usuário já preencheu os dados e insere os dados na variável form
     verificaDados () {
       const dados = this.$store.state.dados_profissional
       if (dados) {
         this.form = dados
       }
     },
+    // verifica se o usuário já preencheu os dados e emite um evento para o pai
     async onSubmit () {
       this.$emit('next', this.form)
     }

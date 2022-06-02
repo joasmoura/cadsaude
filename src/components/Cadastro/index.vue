@@ -30,11 +30,13 @@ export default {
     }
   },
   watch: {
+    // quando o store mudar, verifica se o step é maior que 1 se o valor do store é nulo e retorna para o início do formulário
     '$store.state.dados_profissional' (val) {
       if (this.step > 1 && !val) {
         this.step = 1
       }
     },
+    // quando o store mudar, verifica se o step é maior que 1 se o valor do store é nulo e retorna para o início do formulário
     '$store.state.dados_atendimento' (val) {
       if (this.step > 1 && !val) {
         this.step = 1
@@ -42,10 +44,13 @@ export default {
     }
   },
   methods: {
+    // quando o botão de próximo for clicado, insere os dados do profissional o step é incrementado
     inserirDadosProfissional (dados) {
       this.$store.dispatch('inserirDadosProfissional', dados)
       this.nextStep()
     },
+
+    //quando o botao de próximo for clicado, insere os dados do atendimento e o step é incrementado
     inserirDadosAtendimento (dados) {
       this.$store.dispatch('inserirDadosAtendimento', dados)
       this.nextStep()
@@ -53,6 +58,7 @@ export default {
     nextStep () {
       this.step++
     },
+    // quando o botão de voltar for clicado, o step é decrementado
     prevStep () {
       if (this.step > 1) {
         this.step--

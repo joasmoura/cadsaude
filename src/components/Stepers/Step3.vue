@@ -59,18 +59,22 @@ export default {
     step: Number
   },
   methods: {
+    // retorna o nome do estado
     getEstado (value) {
         const estado = this.$store.state.estados.find(item => parseInt(item.id) === parseInt(value))
         return estado ? estado.nome : ''
     },
+    // retorna o nome da cidade
     getCidade (value) {
         const cidade = this.$store.state.cidades.find(item => parseInt(item.id) === parseInt(value))
         return cidade ? cidade.nome : ''
     },
+    // retorna o nome da forma de pagamento
     getFormaPagamento (value) {
         const forma = this.$store.state.formas_pagamento.find(item => item.value === value)
         return forma ? forma.text : ''
     },
+    // retorna o nome da parcela quando a forma de pagamento for cartão
     getParcela (value) {
         const parcela = this.$store.state.parcelas_cartao.find(item => item.value === value)
         return parcela ? parcela.text : ''

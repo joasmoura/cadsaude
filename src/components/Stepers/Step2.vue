@@ -102,6 +102,7 @@ export default {
     this.getEspecialidades()
   },
   methods: {
+    // verifica se o usuário já preencheu os dados e insere os dados na variável form
     verificaDados () {
       const dados = this.$store.state.dados_atendimento
       if (dados) {
@@ -120,11 +121,9 @@ export default {
         })
       }
     },
+    // verifica se o usuário já preencheu os dados e emite um evento para o pai
     async onSubmit () {
       this.$emit('next', this.form)
-    },
-    selectFormaPagamento () {
-      
     }
   }
 }
